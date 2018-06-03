@@ -38,18 +38,40 @@ const styles = StyleSheet.create({
 });
 
 class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false
+    };
+
+    this.getSpotifyCredentials = this.getSpotifyCredentials.bind(this);
+  }
+
+  componentDidMount() {
+    this.getSpotifyCredentials();
+  }
+
+  getSpotifyCredentials() {
+    const spotifyClientID = process.env.SPOTIFY_CLIENT_ID;
+    console.log('spotifyClientID: ', spotifyClientID);
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <ImageBackground style={styles.backgroundImage} source={NightSky}>
           <Text style={styles.headerText}>Welcome to BandOwl!</Text>
-          <Button
-            buttonText="Get Started"
-            onPress={() => this.props.navigation.navigate('GetStarted')}
-            backgroundColor="#63458A"
-          >
-            <Text>Get Started</Text>
-          </Button>
+          {
+            this.state.isLoading ?
+            <Text>Hold up....</Text> :
+            <Button
+              buttonText="Get Started"
+              onPress={() => this.props.navigation.navigate('GetStarted')}
+              backgroundColor="#63458A"
+            >
+              <Text>Get Started</Text>
+            </Button>
+          }
         </ImageBackground>
       </View>
     );

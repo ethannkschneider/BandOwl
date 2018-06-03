@@ -25,12 +25,12 @@ export default class GetStarted extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E4B7E5',
+    backgroundColor: '#E1F2FE',
     alignItems: 'center',
     justifyContent: 'center',
   },
   headerText: {
-    color: '#9A48D0',
+    color: '#2A2B2A',
     fontSize: 30
   }
 });
